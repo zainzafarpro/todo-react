@@ -22,6 +22,11 @@ const TodoItem = ({ todo, id, completed }) => {
   }
 
   function handleEditUpdate(e) {
+    if (e.target.value === "") {
+      alert("You must enter your task.");
+      return;
+    }
+
     setIsEditing(false);
     dispatch({
       type: "EDIT_TODO",
@@ -62,7 +67,10 @@ const TodoItem = ({ todo, id, completed }) => {
       </div>
     </div>
   ) : (
-    <form>
+    <form
+      className="border-black flex gap-4 items-center border-b border-b-gray-400 py-3"
+      onSubmit={(e) => e.preventDefault()}
+    >
       <input
         onBlur={(e) => handleEditUpdate(e)}
         className="border border-gray-400 rounded h-10 px-3 py-1 w-full"

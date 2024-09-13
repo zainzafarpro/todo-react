@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { TodoContext } from "../../context/TodoContext";
 
@@ -6,7 +6,8 @@ const AddTodo = () => {
   const [disabled, setDisabled] = useState(true);
   const newID = uuidv4();
   const todoRef = useRef("");
-  const { dispatch } = useContext(TodoContext);
+  const { dispatch, state } = useContext(TodoContext);
+
   const handleAddTodo = (e) => {
     e.preventDefault();
 
@@ -17,6 +18,7 @@ const AddTodo = () => {
         payload: todoRef?.current?.value,
         completed: false,
       });
+
       setDisabled(true);
       todoRef.current.value = "";
     }
@@ -30,7 +32,9 @@ const AddTodo = () => {
     }
   };
 
-  console.log(disabled);
+  useEffect(() => {
+    localStorage.setItem("key", JSON.stringify(state));
+  }, [state]);
 
   return (
     <form

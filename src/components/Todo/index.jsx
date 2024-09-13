@@ -3,21 +3,26 @@ import AddTodo from "../AddTodo";
 import CompletedTask from "../CompletedTask";
 import TodoItem from "../TodoItem";
 import { TodoContext } from "../../context/TodoContext";
+import SearchTodo from "../SearchTodo";
 
 const Todo = () => {
   const {
-    state: { todos, totalTodos, completedTodos },
+    state: { todos, totalTodos, completedTodos, filteredTodos },
   } = useContext(TodoContext);
-  console.log(useContext(TodoContext));
 
   return (
     <div className="max-w-md mx-auto">
       <CompletedTask completedTodos={completedTodos} totalTodos={totalTodos} />
       <AddTodo />
-      {todos.length ? (
-        todos?.map(({ id, text, completed }) => (
-          <TodoItem key={id} id={id} todo={text} completed={completed} />
-        ))
+      {filteredTodos?.length || todos.length ? (
+        <>
+          <SearchTodo />
+          <div className="max-h-96 overflow-y-auto">
+            {filteredTodos?.map(({ id, text, completed }) => (
+              <TodoItem key={id} id={id} todo={text} completed={completed} />
+            ))}
+          </div>
+        </>
       ) : (
         <div className="text-center">
           Feeling lonely? 😿 Plan your next task! 🤩
