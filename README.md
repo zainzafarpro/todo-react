@@ -7,6 +7,10 @@ yarn
 yarn dev
 ```
 
+```bash
+Demo: https://zainzafarpro.github.io/todo-react/
+```
+
 <img width="706" alt="Screenshot 2024-09-11 at 2 39 17 PM" src="https://github.com/user-attachments/assets/1f2f2f17-8150-42dc-aad5-dd38c26662d9">
 <img width="673" alt="Screenshot 2024-09-11 at 2 38 52 PM" src="https://github.com/user-attachments/assets/9e685094-8b1e-4b14-a61a-68ce5eba7035">
 <img width="601" alt="Screenshot 2024-09-11 at 2 38 30 PM" src="https://github.com/user-attachments/assets/8ca60949-abba-4cf3-9078-f3353a11cd8b">
